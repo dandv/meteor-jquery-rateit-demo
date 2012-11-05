@@ -1,0 +1,24 @@
+<head>
+  <title>rateit</title>
+</head>
+
+<body>
+  {{> ratingboard}}
+</body>
+
+<template name="ratingboard">
+  <input type="text" id="add-what">
+  <div class="rateit" id="add-rating"></div>
+  <button id="add-button">Add rating</button>
+  <hr/>
+  <ul>
+  {{#each ratings}}
+    <li>{{> rating}}</li>
+  {{/each}}
+  </ul>
+</template>
+
+<template name="rating">
+  {{what}} is rated {{rating}}: 
+  <div class="rateit" data-rateit-value="{{rating}}"></div>
+</template>
