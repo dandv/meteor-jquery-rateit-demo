@@ -11,11 +11,15 @@
   <div class="rateit" id="add-rating"></div>
   <button id="add-button">Add rating</button>
   <hr/>
+  {{#if ratingsLoaded}}
   <ul>
   {{#each ratings}}
     <li>{{> rating}}</li>
   {{/each}}
   </ul>
+  {{else}}
+    <img src="http://upload.wikimedia.org/wikipedia/commons/2/2e/24px-spinner-black.gif">
+  {{/if}}  
 </template>
 
 <template name="rating">

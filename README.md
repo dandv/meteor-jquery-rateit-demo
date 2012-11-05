@@ -12,3 +12,9 @@ Meteorite will take care of installing the `jquery-rating` dependency.
 ## Author
 
 [Dan Dascalescu](http://wiki.dandascalescu.com)
+
+
+## TODO
+
+* Update existing ratings
+* Disallow rating the same thing more than once

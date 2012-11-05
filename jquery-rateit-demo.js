@@ -21,6 +21,16 @@ if (Meteor.isClient) {
       });
     }
   });
+
+  Meteor.subscribe('ratings', function onComplete() {
+    Session.set('ratingsLoaded', true);
+  });
+  
+  Template.ratingboard.ratingsLoaded = function () {
+    return Session.get('ratingsLoaded');
+  };
+
+  
 }
 
 if (Meteor.isServer) {
@@ -30,5 +40,8 @@ if (Meteor.isServer) {
       Ratings.insert({what: 'meteor', rating: 5});
       Ratings.insert({what: 'php', rating: 2});
     }
+  });
+  Meteor.publish("ratings", function () {
+    return Ratings.find({});
   });
 }
