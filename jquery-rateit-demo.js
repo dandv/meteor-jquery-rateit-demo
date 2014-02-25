@@ -22,15 +22,15 @@ if (Meteor.isClient) {
     }
   });
 
-  Meteor.subscribe('ratings', function onComplete() {
+  Meteor.subscribe('ratings', function onReady() {
     Session.set('ratingsLoaded', true);
   });
-  
+
   Template.ratingboard.ratingsLoaded = function () {
     return Session.get('ratingsLoaded');
   };
 
-  
+
 }
 
 if (Meteor.isServer) {
