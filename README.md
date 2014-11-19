@@ -1,12 +1,6 @@
-A simple demo for the [jquery-rateit](https://atmosphere.meteor.com/package/jquery-rateit) meteor plugin.
+A simple demo for the [jquery-rateit](https://atmospherejs.com/dandv/jquery-rateit) Meteor plugin.
 
-
-## Running
-
-1. `npm install -g meteorite` (if not already installed)
-2. `mrt`
-
-Meteorite will take care of installing the `jquery-rating` dependency.
+Simply execute `meteor run`.
 
 
 ## Author

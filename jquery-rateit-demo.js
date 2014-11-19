@@ -1,23 +1,28 @@
 "use strict";
 
-var Ratings = new Meteor.Collection("ratings");
+var Ratings = new Mongo.Collection("ratings");
 
 if (Meteor.isClient) {
-  Template.ratingboard.ratings = function () {
-    return Ratings.find({});
-  }
+  Template.ratingBoard.helpers({
+    ratings: function () {
+      return Ratings.find({});
+    },
+    ratingsLoaded: function () {
+      return Session.get('ratingsLoaded');
+    }
+  });
 
   // .rateit elements need to be progressively enhanced after they're created
-  Template.ratingboard.rendered = function () {
+  Template.rating.rendered = function () {
     // at .created() time, it's too early to run rateit(), so run it at rendered()
-    $(this.findAll('.rateit')).rateit();
+    this.$('.rateit').rateit();
   }
 
-  Template.ratingboard.events({
-    'click #add-button' : function () {
+  Template.ratingBoard.events({
+    'click #add-button' : function (event) {
       Ratings.insert({
-        what: $('#add-what').val(),
-        rating: $('#add-rating').rateit('value')  // that's how you fetch the rating
+        what: Template.instance().find('input').value,
+        rating: Template.instance().$('#add-rating').rateit('value')  // that's how you fetch the rating
       });
     }
   });
@@ -25,10 +30,6 @@ if (Meteor.isClient) {
   Meteor.subscribe('ratings', function onReady() {
     Session.set('ratingsLoaded', true);
   });
-
-  Template.ratingboard.ratingsLoaded = function () {
-    return Session.get('ratingsLoaded');
-  };
 
 
 }
