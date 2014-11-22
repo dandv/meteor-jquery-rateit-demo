@@ -7,9 +7,11 @@
 </body>
 
 <template name="ratingBoard">
-  <input type="text" id="add-what">
-  <div class="rateit" id="add-rating"></div>
-  <button id="add-button">Add rating</button>
+  <form>
+    <input type="text" id="add-what">
+    <span class="rateit" id="add-rating"></span>
+    <button id="add-button">Add rating</button>
+  </form>  
   <hr/>
   {{#if ratingsLoaded}}
     <ul>

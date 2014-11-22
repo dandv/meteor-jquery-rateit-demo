@@ -19,11 +19,12 @@ if (Meteor.isClient) {
   }
 
   Template.ratingBoard.events({
-    'click #add-button' : function (event) {
+    'submit form' : function (event, template) {
       Ratings.insert({
-        what: Template.instance().find('input').value,
-        rating: Template.instance().$('#add-rating').rateit('value')  // that's how you fetch the rating
+        what: template.find('input').value,
+        rating: template.$('#add-rating').rateit('value')  // that's how you fetch the rating
       });
+      return false;  // don't submit the form
     }
   });
 
